@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{StudentService} from '../../shared/student.service';
 import{DepartmentService} from '../../shared/department.service';
+import{NotificationService} from '../../shared/notification.service';
 
 @Component({
   selector: 'app-studnet-child',
@@ -10,8 +11,9 @@ import{DepartmentService} from '../../shared/department.service';
 export class StudnetChildComponent implements OnInit {
 
   constructor(private service: StudentService,
-    private depservice:DepartmentService) { }
-    
+    private depservice:DepartmentService,
+    private notificationservice:NotificationService) { }
+
   ngOnInit() {
 this.service.getStudent();
   }
@@ -25,8 +27,8 @@ this.service.getStudent();
     if(this.service.form.valid){
       this.service.insertStudent(this.service.form.value);
       this.onClear();
+      this.notificationservice.sucess(':: Submitted successfully');
     }
-
   }
 
 }
