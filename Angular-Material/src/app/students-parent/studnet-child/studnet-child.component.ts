@@ -10,6 +10,14 @@ export class StudnetChildComponent implements OnInit {
 
   constructor(private service: StudentService) { }
 
+departments =[
+{id:3,value:'Dep 1'},
+{id:4,value:'Dep 2'},
+{id:3,value:'Dep 3'}];
+
+
+
+
   ngOnInit() {
   }
 
