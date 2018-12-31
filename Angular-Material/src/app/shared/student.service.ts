@@ -19,7 +19,6 @@ export class StudentService {
     joinDate:new FormControl(''),
     isStateStudnet:new FormControl(false)
   });
-
   initializeValue(){
     this.form.setValue({
       $key:null,
@@ -32,6 +31,5 @@ export class StudentService {
       joinDate:'',
       isStateStudnet:false
       });
-
   }
 }

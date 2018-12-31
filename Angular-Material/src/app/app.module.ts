@@ -9,6 +9,9 @@ import {MaterialModule} from './material/material.module';
 import{StudentService} from './shared/student.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import{AngularFireModule} from 'angularfire2';
+import{AngularFireDatabaseModule} from 'angularfire2/database';
+import{environment} from  '../environments/environment';
 
 
 
@@ -24,7 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)  
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]
