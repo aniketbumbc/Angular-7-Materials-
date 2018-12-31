@@ -15,10 +15,13 @@ departments =[
 {id:4,value:'Dep 2'},
 {id:3,value:'Dep 3'}];
 
-
-
-
   ngOnInit() {
+
+  }
+
+  onClear(){
+    this.service.form.reset();
+    this.service.initializeValue();
   }
 
 }
