@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{StudentService} from '../../shared/student.service';
+import{DepartmentService} from '../../shared/department.service';
 
 @Component({
   selector: 'app-studnet-child',
@@ -8,20 +9,24 @@ import{StudentService} from '../../shared/student.service';
 })
 export class StudnetChildComponent implements OnInit {
 
-  constructor(private service: StudentService) { }
-
-departments =[
-{id:3,value:'Dep 1'},
-{id:4,value:'Dep 2'},
-{id:3,value:'Dep 3'}];
-
+  constructor(private service: StudentService,
+    private depservice:DepartmentService) { }
+    
   ngOnInit() {
-
+this.service.getStudent();
   }
 
   onClear(){
     this.service.form.reset();
     this.service.initializeValue();
+  }
+
+  onSubmit(){
+    if(this.service.form.valid){
+      this.service.insertStudent(this.service.form.value);
+      this.onClear();
+    }
+
   }
 
 }

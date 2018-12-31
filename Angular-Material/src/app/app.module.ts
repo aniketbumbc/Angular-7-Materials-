@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{AngularFireModule} from 'angularfire2';
 import{AngularFireDatabaseModule} from 'angularfire2/database';
 import{environment} from  '../environments/environment';
+import{DepartmentService} from '../app/shared/department.service';
+
 
 
 
@@ -31,7 +33,7 @@ import{environment} from  '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)  
   ],
-  providers: [StudentService],
+  providers: [StudentService,DepartmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
