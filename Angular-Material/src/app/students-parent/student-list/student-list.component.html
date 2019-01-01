@@ -20,15 +20,21 @@
           <ng-container matColumnDef=mobile>
               <mat-header-cell *matHeaderCellDef> mobile </mat-header-cell>       
               <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
-            </ng-container>
+            </ng-container>          
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>   
                 <mat-cell *matCellDef="let row">
                   <button mat-icon-button><mat-icon>launch</mat-icon></button>
-                  <button mat-icon-button color="warn"><mat-icon>delet_outline</mat-icon></button>
+                  <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
                 </mat-cell>  
-                </ng-container>            
+                </ng-container>                       
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row;columns:displayedColumns;"></mat-row>
+    <ng-container matColumnDef="loading">            
+        <mat-footer-cell *matFooterCellDef colspan="6">
+        Loading Data .....
+      </mat-footer-cell>
+      </ng-container>    
+    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listData!=null}"></mat-footer-row>
   </mat-table>
 </div>
