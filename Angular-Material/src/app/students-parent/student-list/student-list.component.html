@@ -1,0 +1,35 @@
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="listData">
+    <ng-container matColumnDef=fullname>
+      <mat-header-cell *matHeaderCellDef>Full Name </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.fullname}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef=city>
+        <mat-header-cell *matHeaderCellDef> City </mat-header-cell>       
+        <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef=department>
+          <mat-header-cell *matHeaderCellDef> Department </mat-header-cell>       
+          <mat-cell *matCellDef="let element">{{element.department}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef=email>
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>       
+            <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef=mobile>
+              <mat-header-cell *matHeaderCellDef> mobile </mat-header-cell>       
+              <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef=gender>
+                <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>       
+                <mat-cell *matCellDef="let element">{{element.gender}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef=isStateStudent>
+                  <mat-header-cell *matHeaderCellDef> State Student </mat-header-cell>       
+                  <mat-cell *matCellDef="let element">{{element.isStateStudent}}</mat-cell>
+                </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row;columns:displayedColumns;"></mat-row>
+  </mat-table>
+</div>

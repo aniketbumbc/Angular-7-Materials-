@@ -13,6 +13,7 @@ import{AngularFireModule} from 'angularfire2';
 import{AngularFireDatabaseModule} from 'angularfire2/database';
 import{environment} from  '../environments/environment';
 import{DepartmentService} from '../app/shared/department.service';
+import { StudentListComponent } from './students-parent/student-list/student-list.component';
 
 
 
@@ -22,7 +23,8 @@ import{DepartmentService} from '../app/shared/department.service';
   declarations: [
     AppComponent,
     StudentsParentComponent,
-    StudnetChildComponent
+    StudnetChildComponent,
+    StudentListComponent
   ],
   imports: [
     BrowserModule,

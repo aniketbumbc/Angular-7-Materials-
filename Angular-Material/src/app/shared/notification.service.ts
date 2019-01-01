@@ -10,9 +10,9 @@ export class NotificationService {
   constructor(private matsnackbar:MatSnackBar) { }
 
   config:MatSnackBarConfig={
-duration:3000,
-horizontalPosition:'right',
-verticalPosition:'top'
+  duration:3000,
+  horizontalPosition:'right',
+  verticalPosition:'top'
   }
 
   sucess(msg){
