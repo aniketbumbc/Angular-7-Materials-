@@ -11,7 +11,7 @@ import{MatTableDataSource} from '@angular/material';
 export class StudentListComponent implements OnInit {
 
   listData:MatTableDataSource<any>;
-  displayedColumns:string[] = ['fullname','city','department','email','mobile','gender','isStateStudent'];
+  displayedColumns:string[] = ['fullname','city','department','email','mobile','actions'];
 
   constructor(private service:StudentService) { }
 

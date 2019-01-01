@@ -21,14 +21,13 @@
               <mat-header-cell *matHeaderCellDef> mobile </mat-header-cell>       
               <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
             </ng-container>
-            <ng-container matColumnDef=gender>
-                <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>       
-                <mat-cell *matCellDef="let element">{{element.gender}}</mat-cell>
-              </ng-container>
-              <ng-container matColumnDef=isStateStudent>
-                  <mat-header-cell *matHeaderCellDef> State Student </mat-header-cell>       
-                  <mat-cell *matCellDef="let element">{{element.isStateStudent}}</mat-cell>
-                </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>   
+                <mat-cell *matCellDef="let row">
+                  <button mat-icon-button><mat-icon>launch</mat-icon></button>
+                  <button mat-icon-button color="warn"><mat-icon>delet_outline</mat-icon></button>
+                </mat-cell>  
+                </ng-container>            
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row;columns:displayedColumns;"></mat-row>
   </mat-table>
