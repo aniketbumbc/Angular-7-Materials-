@@ -14,6 +14,7 @@ export class StudentListComponent implements OnInit {
   displayedColumns:string[] = ['fullname','city','department','email','mobile','actions'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
+  searchKey:string;
 
   constructor(private service:StudentService) { }
 

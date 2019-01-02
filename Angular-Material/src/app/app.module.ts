@@ -7,7 +7,7 @@ import { StudentsParentComponent } from './students-parent/students-parent.compo
 import { StudnetChildComponent } from './students-parent/studnet-child/studnet-child.component';
 import {MaterialModule} from './material/material.module';
 import{StudentService} from './shared/student.service';
-import {ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import{AngularFireModule} from 'angularfire2';
 import{AngularFireDatabaseModule} from 'angularfire2/database';
@@ -33,7 +33,8 @@ import { StudentListComponent } from './students-parent/student-list/student-lis
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)  
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    FormsModule  
   ],
   providers: [StudentService,DepartmentService],
   bootstrap: [AppComponent]
