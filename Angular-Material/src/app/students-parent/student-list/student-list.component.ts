@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {StudentService} from '../../shared/student.service';
-import{MatTableDataSource} from '@angular/material';
+import{MatTableDataSource, MatSort} from '@angular/material';
 
 
 @Component({
@@ -12,6 +12,7 @@ export class StudentListComponent implements OnInit {
 
   listData:MatTableDataSource<any>;
   displayedColumns:string[] = ['fullname','city','department','email','mobile','actions'];
+  @ViewChild(MatSort) sort:MatSort;
 
   constructor(private service:StudentService) { }
 
@@ -27,6 +28,7 @@ export class StudentListComponent implements OnInit {
         });
         // Need list of data render into data table 
         this.listData = new MatTableDataSource(array);
+        this.listData.sort = this.sort;
       })
     }
   }
