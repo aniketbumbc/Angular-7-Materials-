@@ -37,4 +37,5 @@
       </ng-container>    
     <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': listData!=null}"></mat-footer-row>
   </mat-table>
+  <mat-paginator [pageSizeOptions]="[3,6,12,20,100]"[pageSize]="3" showFirstLastButton>  </mat-paginator>
 </div>
