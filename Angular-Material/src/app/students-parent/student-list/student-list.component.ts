@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {StudentService} from '../../shared/student.service';
 import{MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
+import { DepartmentService } from 'src/app/shared/department.service';
 
 
 @Component({
@@ -11,20 +12,23 @@ import{MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
 export class StudentListComponent implements OnInit {
 
   listData:MatTableDataSource<any>;
-  displayedColumns:string[] = ['fullname','city','department','email','mobile','actions'];
+  displayedColumns:string[] = ['fullname','city','department','email','mobile','departmentName','actions'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
   searchKey:string;
 
-  constructor(private service:StudentService) { }
+  constructor(private service:StudentService,
+    private depservice:DepartmentService) { }
 
   ngOnInit() {
 
     this.service.getStudent().subscribe(
       list=>{
         let array = list.map(item=>{
+          let departmentName = this.depservice.getDepartmentName(item.payload.val()['department']);
           return{
             $key:item.key,
+            departmentName,
             ...item.payload.val()
           }          
         });
