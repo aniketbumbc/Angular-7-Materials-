@@ -34,4 +34,14 @@ export class StudentListComponent implements OnInit {
         this.listData.paginator = this.paginator;
       })
     }
+    searchClear(){
+      this.searchKey = " ";
+      this.applyFilter();      
+    }
+    applyFilter(){
+      this.listData.filter = this.searchKey.trim().toLowerCase();
+    }
+
+
+    
   }
