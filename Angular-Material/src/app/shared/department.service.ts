@@ -22,12 +22,13 @@ export class DepartmentService {
       });  
    }
 
-   getDepartmentName($key){
-  
+   getDepartmentName($key){  
     if($key == "0")
     return "";  
-  else{
-    _.find(this.array,(obj) => {return obj.$key == $key; });
+  else if ($key == "4"){
+ _.find(this.array,(obj) => {return obj.$key == $key; });   
+  }else{
+    //_.find(this.array,(obj) => {return obj.$key == $key; })['name'];    
   }
 }
 }
