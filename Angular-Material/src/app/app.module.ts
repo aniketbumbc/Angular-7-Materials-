@@ -37,6 +37,7 @@ import { StudentListComponent } from './students-parent/student-list/student-lis
     FormsModule  
   ],
   providers: [StudentService,DepartmentService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[StudnetChildComponent]
 })
 export class AppModule { }

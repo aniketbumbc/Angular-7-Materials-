@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {StudentService} from '../../shared/student.service';
 import{MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
 import { DepartmentService } from 'src/app/shared/department.service';
+import {MatDialog,MatDialogConfig} from '@angular/material';
+import { StudnetChildComponent } from '../studnet-child/studnet-child.component';
+
 
 
 @Component({
@@ -18,7 +21,8 @@ export class StudentListComponent implements OnInit {
   searchKey:string;
 
   constructor(private service:StudentService,
-    private depservice:DepartmentService) { }
+    private depservice:DepartmentService,
+    private dialog:MatDialog) { }
 
   ngOnInit() {
 
@@ -44,6 +48,16 @@ export class StudentListComponent implements OnInit {
     }
     applyFilter(){
       this.listData.filter = this.searchKey.trim().toLowerCase();
+    }
+    onCreate(){
+      this.service.initializeValue();
+      const dialogConfig=  new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "60%";
+      this.dialog.open(StudnetChildComponent,dialogConfig);
+
+
     }
 
 
