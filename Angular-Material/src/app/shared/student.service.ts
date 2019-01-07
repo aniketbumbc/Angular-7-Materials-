@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import {AngularFireDatabase,AngularFireList} from 'angularfire2/database';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class StudentService {
 
   form:FormGroup = new FormGroup ({
     $key: new FormControl(null),
-    fullName:new FormControl('',Validators.required),
+    fullname:new FormControl('',Validators.required),
     email:new FormControl('',Validators.email),
     mobile:new FormControl('',[Validators.required,Validators.minLength(9),Validators.maxLength(11)]),
     city:new FormControl(''),
@@ -25,7 +26,7 @@ export class StudentService {
   initializeValue(){
     this.form.setValue({
       $key:null,
-      fullName:'',
+      fullname:'',
       email:'',
       city:'',
       mobile:'',
@@ -43,7 +44,7 @@ export class StudentService {
 
   insertStudent(student){
     this.studentlist.push({
-    fullname:student.fullName,   
+    fullname:student.fullname,   
       email:student.email,
       city:student.city,
       mobile:student.mobile,
@@ -55,7 +56,7 @@ export class StudentService {
   }
   updateStudent(student){
     this.studentlist.update(student.$key,{
-      fullname:student.fullName,   
+      fullname:student.fullname,   
       email:student.email,
       city:student.city,
       mobile:student.mobile,
@@ -68,5 +69,11 @@ export class StudentService {
 
   deleteStudent($key:string){
     this.studentlist.remove($key);
+  }
+  populateForm(student){
+   // this.form.setValue(_.omit(student,'departmentName'));
+   this.form.setValue(student);
+   joinDate:student.joinDate;
+
   }
 }

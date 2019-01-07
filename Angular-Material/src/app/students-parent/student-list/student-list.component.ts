@@ -56,10 +56,14 @@ export class StudentListComponent implements OnInit {
       dialogConfig.autoFocus = true;
       dialogConfig.width = "60%";
       this.dialog.open(StudnetChildComponent,dialogConfig);
-
-
     }
-
-
+    onEdit(row){
+      this.service.populateForm(row);
+      const dialogConfig=  new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "60%";
+      this.dialog.open(StudnetChildComponent,dialogConfig);
+    }
     
   }
