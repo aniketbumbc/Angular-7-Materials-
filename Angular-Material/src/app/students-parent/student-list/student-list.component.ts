@@ -4,6 +4,7 @@ import{MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
 import { DepartmentService } from 'src/app/shared/department.service';
 import {MatDialog,MatDialogConfig} from '@angular/material';
 import { StudnetChildComponent } from '../studnet-child/studnet-child.component';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 
 
@@ -22,7 +23,8 @@ export class StudentListComponent implements OnInit {
 
   constructor(private service:StudentService,
     private depservice:DepartmentService,
-    private dialog:MatDialog) { }
+    private dialog:MatDialog,
+    private notificationService:NotificationService) { }
 
   ngOnInit() {
 
@@ -65,5 +67,10 @@ export class StudentListComponent implements OnInit {
       dialogConfig.width = "60%";
       this.dialog.open(StudnetChildComponent,dialogConfig);
     }
-    
+    onDelete($key){
+      if(confirm('Are you sure to delete record')){
+        this.service.deleteStudent($key);
+        this.notificationService.warn('!Delete Successfully');
+      }  
+    }    
   }
