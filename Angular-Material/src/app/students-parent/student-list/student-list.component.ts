@@ -5,6 +5,7 @@ import { DepartmentService } from 'src/app/shared/department.service';
 import {MatDialog,MatDialogConfig} from '@angular/material';
 import { StudnetChildComponent } from '../studnet-child/studnet-child.component';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { DialogService } from 'src/app/shared/dialog.service';
 
 
 
@@ -24,7 +25,8 @@ export class StudentListComponent implements OnInit {
   constructor(private service:StudentService,
     private depservice:DepartmentService,
     private dialog:MatDialog,
-    private notificationService:NotificationService) { }
+    private notificationService:NotificationService,
+    private dialogService:DialogService) { }
 
   ngOnInit() {
 
@@ -68,9 +70,12 @@ export class StudentListComponent implements OnInit {
       this.dialog.open(StudnetChildComponent,dialogConfig);
     }
     onDelete($key){
-      if(confirm('Are you sure to delete record')){
-        this.service.deleteStudent($key);
-        this.notificationService.warn('!Delete Successfully');
-      }  
+      this.dialogService.openConfirmDialog('Are you sure to delete record')
+      .afterClosed().subscribe(res=>{
+       if(res == true){
+         this.service.deleteStudent($key);
+         this.notificationService.warn('!Delete Successfully');
+       }
+      });
     }    
   }

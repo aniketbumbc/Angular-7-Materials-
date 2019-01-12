@@ -14,19 +14,16 @@ import{AngularFireDatabaseModule} from 'angularfire2/database';
 import{environment} from  '../environments/environment';
 import{DepartmentService} from '../app/shared/department.service';
 import { StudentListComponent } from './students-parent/student-list/student-list.component';
-import { DatePipe } from '@angular/common'
-
-
-
-
-
+import { DatePipe } from '@angular/common';
+import { MatDialogComponent } from './mat-dialog/mat-dialog.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentsParentComponent,
     StudnetChildComponent,
-    StudentListComponent
+    StudentListComponent,
+    MatDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +38,6 @@ import { DatePipe } from '@angular/common'
   ],
   providers: [StudentService,DepartmentService,DatePipe],
   bootstrap: [AppComponent],
-  entryComponents:[StudnetChildComponent]
+  entryComponents:[StudnetChildComponent,MatDialogComponent]
 })
 export class AppModule { }
