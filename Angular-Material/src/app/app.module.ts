@@ -14,6 +14,8 @@ import{AngularFireDatabaseModule} from 'angularfire2/database';
 import{environment} from  '../environments/environment';
 import{DepartmentService} from '../app/shared/department.service';
 import { StudentListComponent } from './students-parent/student-list/student-list.component';
+import { DatePipe } from '@angular/common'
+
 
 
 
@@ -34,9 +36,10 @@ import { StudentListComponent } from './students-parent/student-list/student-lis
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    FormsModule  
+    FormsModule
+   
   ],
-  providers: [StudentService,DepartmentService],
+  providers: [StudentService,DepartmentService,DatePipe],
   bootstrap: [AppComponent],
   entryComponents:[StudnetChildComponent]
 })

@@ -3,12 +3,14 @@ import {FormGroup,FormControl,Validators} from '@angular/forms';
 import {AngularFireDatabase,AngularFireList} from 'angularfire2/database';
 import * as _ from 'lodash';
 
+import { DatePipe } from '@angular/common';
+
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
-  constructor(private firebase:AngularFireDatabase) { }
+  constructor(private firebase:AngularFireDatabase,private datePipe: DatePipe) { }
 
   studentlist:AngularFireList<any>;
 
@@ -50,7 +52,7 @@ export class StudentService {
       mobile:student.mobile,
       gender:student.gender,
       department:student.department,
-      joinDate:student.joinDate,
+      joinDate:student.joinDate == "" ? "" : this.datePipe.transform(student.joinDate, 'yyyy-MM-dd'),
       isStateStudnet:student.isStateStudnet
     });
   }
@@ -62,7 +64,7 @@ export class StudentService {
       mobile:student.mobile,
       gender:student.gender,
       department:student.department,
-      joinDate:student.joinDate,
+      joinDate:student.joinDate == "" ? "" : this.datePipe.transform(student.joinDate, 'yyyy-MM-dd'),
       isStateStudnet:student.isStateStudnet
     });
   }
@@ -71,9 +73,8 @@ export class StudentService {
     this.studentlist.remove($key);
   }
   populateForm(student){
-   // this.form.setValue(_.omit(student,'departmentName'));
-   this.form.setValue(student);
-   joinDate:student.joinDate;
+   this.form.setValue(_.omit(student,'departmentName'));
+    joinDate:student.joinDate == "" ? "" : this.datePipe.transform(student.joinDate, 'yyyy-MM-dd')
 
   }
 }
