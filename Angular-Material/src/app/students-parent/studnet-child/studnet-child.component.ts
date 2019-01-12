@@ -23,11 +23,15 @@ this.service.getStudent();
   onClear(){
     this.service.form.reset();
     this.service.initializeValue();
+    this.notificationservice.sucess(':: Submitted successfully'); 
   }
 
   onSubmit(){
     if(this.service.form.valid){
+      if(!this.service.form.get('$key').value)
       this.service.insertStudent(this.service.form.value);
+      else
+      this.service.updateStudent(this.service.form.value);
       this.onClear();
       this.notificationservice.sucess(':: Submitted successfully');
       this.onClose();
